@@ -12,4 +12,8 @@ mysql -u mysqluser --password=mysqlpw -h 127.0.0.1 inventory
 # create second connector
 curl -i -X POST -H Accept:application/json -H Content-Type:application/json -d @connect-config-outbox.json http://localhost:8083/connectors/
 
+# notes
+
+# require_relative 'models'
 # mysql> insert into outbox_event values (null, 'aarontest', 1, 'idkwtfbbq', '{iamapayload: 1}');
+# OutboxEvent.emit_json('topictest', {:a => 1})
