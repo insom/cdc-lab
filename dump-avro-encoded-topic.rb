@@ -2,13 +2,13 @@ require 'kafka'
 require 'avro_turf/messaging'
 
 $stdout.sync = true
-logger = Logger.new(STDOUT, level: :error)
+logger = Logger.new(STDOUT, level: :info)
 kafka = Kafka.new(seed_brokers: ['localhost:9092'],
                   client_id: 'cdc-example-ruby',
                   logger: logger)
 
 consumer = kafka.consumer(group_id: 'cdc-example-ruby')
-consumer.subscribe('dbserver1.inventory.orders', start_from_beginning: true)
+consumer.subscribe("dbserver1.inventory.#{ ARGV[0] }", start_from_beginning: true)
 
 trap('TERM') { consumer.stop }
 
