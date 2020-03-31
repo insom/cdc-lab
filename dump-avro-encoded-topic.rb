@@ -8,7 +8,7 @@ kafka = Kafka.new(seed_brokers: ['localhost:9092'],
                   logger: logger)
 
 consumer = kafka.consumer(group_id: 'cdc-example-ruby')
-consumer.subscribe("dbserver1.inventory.#{ ARGV[0] }", start_from_beginning: true)
+consumer.subscribe("dbserver1.inventory.#{ ARGV[0] }", start_from_beginning: false)
 
 trap('TERM') { consumer.stop }
 

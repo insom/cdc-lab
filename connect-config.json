@@ -11,6 +11,7 @@
     "database.server.name": "dbserver1",  
     "database.whitelist": "inventory",  
     "database.history.kafka.bootstrap.servers": "broker:29092",  
+    "tombstones.on.delete": false,
     "database.history.kafka.topic": "schema-changes.inventory"  
   }
 }
